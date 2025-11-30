@@ -18,6 +18,9 @@ class Task(models.Model):
     status = models.CharField(choices=STATUS_CHOICES, max_length=50, default='Новий' ,verbose_name='Статус завдання')
     priority = models.CharField(choices=PRIORITY_CHOICES, max_length=50, default='Низький' ,verbose_name='Пріоритет завдання')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    createde_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
+
 
     def __str__(self):
         return self.title
@@ -28,4 +31,6 @@ class Coment(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
     media = models.FileField(upload_to='comments_media/', blank=True, null=True, verbose_name='Медіа файли')
+    createde_at = models.DateTimeField(auto_now_add=True)
+
 
