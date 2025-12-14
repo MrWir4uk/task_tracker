@@ -2,6 +2,16 @@
 {% block content %}
     <h1 class="mb-4">Список завдань</h1>
     <a href="{% url 'task_create' %}" class="btn btn-success mb-3">Створити нове завдання</a>
+    <form action="" method="get" class ="d-flex gap-2 mb-3 align-items-center ">
+        <select class="form-select" aria-label="Default select example" name="status_filter" style="width: 200px; display: inline-block; margin-left: 10px;">
+            <option value="">Обери статус</option>
+            <option value="Новий">Новий</option>
+            <option value="В процесі">В процесі</option>
+            <option value="Завершено">Завершено</option>
+            
+        </select>
+        <button type="submit" class="btn btn-primary mt-2">Фільтрувати</button>
+    </form>
     
     <div class="list-group">
     {% for task in task_list %}

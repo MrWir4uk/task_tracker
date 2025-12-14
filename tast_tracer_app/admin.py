@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Task, Coment
+from .models import Task, Comment
 
-admin.site.register(Coment)
+admin.site.register(Comment)
 admin.site.register(Task)
 
 # Register your models here.

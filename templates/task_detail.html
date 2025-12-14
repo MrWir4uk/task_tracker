@@ -8,4 +8,25 @@
 <a href="{% url 'task_update' task.id %}" class="btn btn-primary">Редагувати задачу</a>
 <a href="{% url 'task_delete' task.id %}" class="btn btn-danger">Видалити задачу</a>
 
+<h2 class="mt-5">Коментарі</h2>
+<form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{comment_form.as_div}}
+        <button type="submit" class="btn btn-primary">Додати коментар</button>
+    </form>
+
+<ul class="list-group mt-3">
+    {% for comment in task.comments.all %}
+        <li class="list-group-item">
+            <p><strong>{{ comment.author.username }}</strong> ({{ comment.created_at }}):</p>
+            <p>{{ comment.content }}</p>
+            {% if comment.media %}
+                <img src="{{comment.media.url}}" alt="" style="width: 100%; max-width: 400px;">
+            {% endif %}
+        </li>
+    {% empty %}
+        <li class="list-group-item">Немає коментарів.</li>
+    {% endfor %}
+
+
 {% endblock content %}

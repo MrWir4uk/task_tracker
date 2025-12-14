@@ -26,11 +26,11 @@ class Task(models.Model):
         return self.title
     
 
-class Coment(models.Model):
+class Comment(models.Model):
     content = models.TextField(verbose_name='Коментар')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    task = models.ForeignKey(Task, on_delete=models.CASCADE)
+    task = models.ForeignKey(Task, on_delete=models.CASCADE, related_name='comments')
     media = models.FileField(upload_to='comments_media/', blank=True, null=True, verbose_name='Медіа файли')
-    createde_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
